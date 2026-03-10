@@ -1,0 +1,57 @@
+# Конфигурация NEAT для самообучающегося гонщика
+# NEAT configuration file for self-learning racing car
+
+[NEAT]
+fitness_criterion     = max
+fitness_threshold     = 100000.0
+pop_size              = 50
+reset_on_extinction   = False
+
+[DefaultGenome]
+# Структура генома
+num_inputs              = 9  # 7 лучей + скорость + угол поворота
+num_hidden              = 6  # Скрытый слой
+num_outputs             = 3  # газ, поворот влево, поворот вправо
+
+# Активационные функции
+activation_default      = sigmoid
+activation_mutate_rate  = 0.0
+activation_options      = sigmoid
+
+# Настройки нейронов
+bias_max_value          = 1.0
+bias_min_value          = -1.0
+bias_mutate_power       = 0.2
+bias_mutate_rate        = 0.7
+bias_replace_rate       = 0.1
+initial_connection      = full_direct
+
+# Настройки соединений
+enabled_default         = True
+enabled_mutate_rate     = 0.01
+weight_max_value        = 2.0
+weight_min_value        = -2.0
+weight_mutate_power     = 0.5
+weight_mutate_rate      = 0.8
+weight_replace_rate     = 0.1
+
+# Совместимость
+compatibility_disjoint_coefficient    = 1.0
+compatibility_weight_coefficient      = 0.5
+
+[Species]
+# Настройки видов
+compatibility_threshold =3.0
+elitism                = 2
+survival_threshold     = 0.2
+
+[Stagnation]
+# Застой вида
+species_fitness_func = max
+max_stagnation       = 20
+species_elitism      = 2
+
+[Reproduction]
+# Воспроизводство
+elitism              = 2
+survival_threshold   = 0.2
